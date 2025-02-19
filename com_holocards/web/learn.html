@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="css/style.css" rel="stylesheet">
+    <link href="css/learn.css" rel="stylesheet">
+    <title>Learn | Holocards</title>
+    <link rel="icon" type="image/x-icon" href="image/favicon.png">
+</head>
+
+<body>
+    <script src="Scripts/script.js"></script>
+    <header>
+        <a href="index.html"><img src="image/HC.png" alt="Logo"></a>
+        <div class="hamburger" onclick="toggleMenu()">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="database.html">DATABASE</a></li>
+                <li><a href="playnow.html">PLAY NOW</a></li>
+                <li><a href="learn.html">LEARN HOLOCARDS</a></li>
+                <li><a href="update.html">UPDATES</a></li>
+            </ul>
+
+            <ul class="nav-menu">
+                <li><a href="database.html">DATABASE</a></li>
+                <li><a href="playnow.html">PLAY NOW</a></li>
+                <li><a href="learn.html">LEARN HOLOCARDS</a></li>
+                <li><a href="update.html">UPDATES</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main style="background-color: #FBF5E4;">
+
+        <h1>General:</h1>
+        <ol>
+            <li>Ensure there are 20 attack cards for each element.</li>
+            <li>Ensure each player has 3 monsters, one from each type.</li>
+            <li>Each player can have a max of 8 attack cards on their field at a time.
+                <ul>
+                    <li>2 in front of the box</li>
+                    <li>3 to the left</li>
+                    <li>3 to the right</li>
+                </ul>
+            </li>
+            <li>When the attack card DRAW deck is depleted, the player who went first will shuffle the DISCARD pile back
+                into the draw pile.</li>
+            <li>At the end of the turn where one player goes down to 1 monster remaining, that player will draw 1 of 4
+                comeback cards.</li>
+        </ol>
+
+        <h1>Start of Game:</h1>
+        <ol>
+            <li>Flip a coin to decide who goes first.
+                <ul>
+                    <li>If using a die: Evens/Odds.</li>
+                </ul>
+            </li>
+            <li>Player going first shuffles attack cards.
+                <ul>
+                    <li>Player going second can cut/tap.</li>
+                </ul>
+            </li>
+            <li>Each player puts their 3 monster cards face down behind the 3D box.</li>
+            <li>Each player will choose and state which monster they will scan in play order.</li>
+            <li>Simultaneously, each player will scan their monster card and place their phone on the box to display it
+                in 3D.</li>
+            <li>Each player will draw 6 attack cards and put them on their field around the box.
+                <ul>
+                    <li>The player going first should be the first to draw attack cards.</li>
+                </ul>
+            </li>
+        </ol>
+
+        <h1>On Turn:</h1>
+        <ol>
+            <li>At the start of each turn, you have 6 points you may spend on:
+                <ul>
+                    <li>1 point: Draw one attack card.</li>
+                    <li>1 point: Discard an attack card.</li>
+                    <li><strong>Exception:</strong> The player going first only has 4 points on their first turn.</li>
+                </ul>
+            </li>
+            <li>If the player has a recovery card, they may play it anytime.</li>
+            <li>Retreat:
+                <ul>
+                    <li>The player may retreat their current creature once per turn before attacking.</li>
+                    <li><strong>Conditions for Retreat:</strong>
+                        <ul>
+                            <li>First: This must not be the owner’s first turn while going first in the match.</li>
+                            <li>Second: To retreat, the owner of the creature must discard 3 attack cards.</li>
+                        </ul>
+                    </li>
+                    <li>After paying the retreat cost, scan a new 3D monster.</li>
+                    <li>Resume turn.</li>
+                </ul>
+            </li>
+            <li>Attack:
+                <ul>
+                    <li>The player must first state they will be attacking and lose all turn points remaining.</li>
+                    <li>The player will choose any number of attack cards to use.
+                        <ul>
+                            <li><strong>Abilities:</strong> ONLY occur if you exhaust/use the number of attack cards
+                                they list.</li>
+                        </ul>
+                    </li>
+                    <li>Damage will be calculated by:
+                        <ul>
+                            <li>First: Add up damage from attack cards (100 damage each).</li>
+                            <li>Second: Add/Use any abilities on the creature card.
+                                <ul>
+                                    <li>If the ability states damage, deal that amount of damage instead of 100 times
+                                        the number of attack cards.</li>
+                                </ul>
+                            </li>
+                            <li>Third: Add/Subtract damage from the type chart.</li>
+                        </ul>
+                    </li>
+                    <li>After calculating, establish whether the opposing monster is knocked out.
+                        <ul>
+                            <li>If knocked out, the opponent will choose a new monster to scan and display in the 3D
+                                box.</li>
+                        </ul>
+                    </li>
+                    <li>Turn end.</li>
+                </ul>
+            </li>
+            <li>Pass:
+                <ul>
+                    <li>The player must first state that they are choosing to pass.</li>
+                    <li>They lose all their remaining points.</li>
+                    <li>Turn end.</li>
+                </ul>
+            </li>
+        </ol>
+
+        <h1>Win Conditions:</h1>
+        <ol>
+            <li>Destroy all of your opponent's creatures.</li>
+        </ol>
+    </main>
+    <footer>
+        <p>&copy; 2025 Holocards. All rights reserved.</p>
+    </footer>
+</body>
+
+</html>
