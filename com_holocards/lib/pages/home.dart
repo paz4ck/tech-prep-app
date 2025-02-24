@@ -7,10 +7,13 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Breakfast'),
-        backgroundColor: Colors.blue,
-        centerTitle: true,
+        title: Text('Gotham Ultra',
+                style: TextStyle(
+                  fontFamily: 'GothamUltra',
+                  fontSize: 24,
+                  ),
       )
+    )
     );
   }
 }

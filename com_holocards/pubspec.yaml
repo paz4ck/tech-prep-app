@@ -84,6 +84,30 @@ flutter:
   #       - asset: fonts/TrajanPro.ttf
   #       - asset: fonts/TrajanPro_Bold.ttf
   #         weight: 700
-  #
+  #   
+
+
+  fonts:
+    - family: AcLonica
+      fonts:
+        - asset: fonts/aclonica.ttf
+
+    - family: GothamUltra
+      fonts:
+        - asset: fonts/Gotham-Ultra.otf
+
+    - family: GothamNarrowMedium
+      fonts:
+        - asset: fonts/GothamNarrow-Medium.otf
+
+    - family: HelveticaBold
+      fonts:
+        - asset: fonts/Helvetica-Bold.ttf
+
+    - family: Helvetica
+      fonts:
+        - asset: fonts/Helvetica.ttf
+
+
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/to/font-from-package
