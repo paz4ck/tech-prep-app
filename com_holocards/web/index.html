@@ -1,38 +1,104 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
-  <!--
-    If you are serving your web app in a path other than the root, change the
-    href value below to reflect the base path you are serving from.
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="css/style.css" rel="stylesheet">
+    <link href="css/index.css" rel="stylesheet">
+    <title>Holocards | Home </title>
+    <link rel="icon" type="image/x-icon" href="image/favicon.png">
 
-    The path provided below has to start and end with a slash "/" in order for
-    it to work correctly.
-
-    For more details:
-    * https://developer.mozilla.org/en-US/docs/Web/HTML/Element/base
-
-    This is a placeholder for base href that will be replaced by the value of
-    the `--base-href` argument provided to `flutter build`.
-  -->
-  <base href="$FLUTTER_BASE_HREF">
-
-  <meta charset="UTF-8">
-  <meta content="IE=Edge" http-equiv="X-UA-Compatible">
-  <meta name="description" content="A new Flutter project.">
-
-  <!-- iOS meta tags & icons -->
-  <meta name="mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black">
-  <meta name="apple-mobile-web-app-title" content="com_holocards">
-  <link rel="apple-touch-icon" href="icons/Icon-192.png">
-
-  <!-- Favicon -->
-  <link rel="icon" type="image/png" href="favicon.png"/>
-
-  <title>com_holocards</title>
-  <link rel="manifest" href="manifest.json">
 </head>
+
 <body>
-  <script src="flutter_bootstrap.js" async></script>
+    <script src="Scripts/script.js"></script>
+    <header>
+        <a href="index.html"><img src="image/HC.png" alt="Logo"></a>
+        <div class="hamburger" onclick="toggleMenu()">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="database.html">DATABASE</a></li>
+                <li><a href="playnow.html">PLAY NOW</a></li>
+                <li><a href="learn.html">LEARN HOLOCARDS</a></li>
+                <li><a href="update.html">UPDATES</a></li>
+            </ul>
+
+            <ul class="nav-menu">
+                <li><a href="database.html">DATABASE</a></li>
+                <li><a href="playnow.html">PLAY NOW</a></li>
+                <li><a href="learn.html">LEARN HOLOCARDS</a></li>
+                <li><a href="update.html">UPDATES</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="main-content">
+        <div class="showcase">
+            <div class="showcase-content">
+                <h1><img src="image/HC-No-BG.png" alt="Logo"></h1>
+                <button><a href="playnow.html">Play Now</a></button>
+            </div>
+        </div>
+
+        <div class="card-container">
+            <div class="card">
+                <div class="card-inner">
+                    <div class="card-front">
+                        <img src="image/ta.PNG" alt="Card Front">
+                    </div>
+                    <div class="card-back">
+                        <img src="image/cb.png" alt="">
+                    </div>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-inner">
+                    <div class="card-front">
+                        <img src="image/th.PNG" alt="Card Front">
+                    </div>
+                    <div class="card-back">
+                        <img src="image/cb.png" alt="">
+                    </div>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-inner">
+                    <div class="card-front">
+                        <img src="image/m.PNG" alt="Card Front">
+                    </div>
+                    <div class="card-back">
+                        <img src="image/cb.png" alt="">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="showcase2">
+        <div class="showcase-content">
+            <h1><img src="image/HC-No-BG.png" alt="Logo"></h1>
+            <button><a href="playnow.html">Play Now</a></button>
+        </div>
+    </div>
+
+    <div class="upcoming">
+        <img src="image/HC-No-BG.png" alt="Logo">
+        <div>
+            <h2>Coming April!</h2>
+            <button><a href="update.html">What's New?</a></button>
+        </div>
+    </div>
+
+
+
+    <footer>
+        <p>&copy; 2025 Holocards | All rights reserved.</p>
+    </footer>
 </body>
+
 </html>
