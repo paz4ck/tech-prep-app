@@ -12,8 +12,10 @@ class HomePage extends StatelessWidget {
                   fontFamily: 'GothamUltra',
                   fontSize: 24,
                   ),
+                ),
+                backgroundColor: Colors.blue,
+                centerTitle: true,
       )
-    )
     );
   }
 }
