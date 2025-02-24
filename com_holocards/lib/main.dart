@@ -19,8 +19,21 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return MaterialApp(
       debugShowCheckedModeBanner: false,
+
+    //Below shows how to include fonts when programming a text area
+      //theme: ThemeData(
+        //textTheme: TextTheme(
+          //bodyText1: TextStyle(fontFamily: 'AcLonica'),
+          //bodyText2: TextStyle(fontFamily: 'GothamUltra'),
+          //bodyText3: TextStyle(fontFamily: 'GothamNarrowMedium'),
+          //bodyText4: TextStyle(fontFamily: 'HelveticaBold'),
+          //bodyText5: TextStyle(fontFamily: 'Helvetica'),
+        //)
+      //)
+    //End of fonts include section
+    
       home: HomePage()
     );
   }
