@@ -7,10 +7,16 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
+      appBar: appBar(),
+    );
+  }
+}
+
+AppBar appBar(){
+  return AppBar(
         title: Row(
           mainAxisAlignment: MainAxisAlignment.center,
-          children: [
+          children: const [
             Text(
               'Holo',
               style: TextStyle(
@@ -24,7 +30,7 @@ class HomePage extends StatelessWidget {
               style: TextStyle(
                 fontFamily: 'AcLonica',
                 fontSize: 24,
-                color: const Color.fromARGB(255, 245, 220, 140),
+                color: Color.fromARGB(255, 245, 220, 140),
               ),
             ),
           ],
@@ -32,38 +38,38 @@ class HomePage extends StatelessWidget {
         backgroundColor: Colors.black,
         centerTitle: true,
         leading: Container(
-          margin: EdgeInsets.all(2),
-          alignment: Alignment.center,
+          margin: const EdgeInsets.all(6),
+          width: 50,
+          height: 50,
           decoration: BoxDecoration(
-            color: Color(0xffF7F8F8),
-            borderRadius: BorderRadius.circular(30)
+            color: const Color(0xffF7F8F8),
+            borderRadius: BorderRadius.circular(30),
           ),
-           child: ClipRRect(
-            borderRadius: BorderRadius.circular(30), // Ensure the image itself is clipped to the circular shape
-            child: SvgPicture.asset('assets/icons/HCimg.svg',
-            height: 200,
-            width: 200,),
+          child: ClipRRect(
+            borderRadius: BorderRadius.circular(30),
+            child: SvgPicture.asset(
+              'assets/icons/HCimg.svg',
+              fit: BoxFit.contain,
+            ),
           ),
         ),
         actions: [
           Container(
-          margin: EdgeInsets.all(1),
-          alignment: Alignment.center,
-          width: 51,
-          height: 51,
-          decoration: BoxDecoration(
-            color: Color(0xffF7F8F8),
-            borderRadius: BorderRadius.circular(1000)
+            margin: const EdgeInsets.all(6),
+            width: 50,
+            height: 50,
+            decoration: BoxDecoration(
+              color: const Color.fromARGB(255, 0, 0, 0),
+              borderRadius: BorderRadius.circular(30),
+            ),
+            child: ClipRRect(
+              borderRadius: BorderRadius.circular(30),
+              child: SvgPicture.asset(
+                'assets/icons/HCimg.svg',
+                fit: BoxFit.contain,
+              ),
+            ),
           ),
-           child: ClipRRect(
-            borderRadius: BorderRadius.circular(1000), // Ensure the image itself is clipped to the circular shape
-            child: SvgPicture.asset('assets/icons/HCimg.svg',
-            height: 2000,
-            width: 2000,),
-          ),
-        ),
         ],
-      )
-    );
-  }
+      );
 }
