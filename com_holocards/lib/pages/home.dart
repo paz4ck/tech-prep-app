@@ -32,13 +32,37 @@ class HomePage extends StatelessWidget {
         backgroundColor: Colors.black,
         centerTitle: true,
         leading: Container(
-          margin: EdgeInsets.all(10),
+          margin: EdgeInsets.all(2),
+          alignment: Alignment.center,
           decoration: BoxDecoration(
-            color: Colors.white,
-            borderRadius: BorderRadius.circular(10)
+            color: Color(0xffF7F8F8),
+            borderRadius: BorderRadius.circular(30)
           ),
-          child: SvgPicture.asset('assests/icons/MainLogo.svg')
+           child: ClipRRect(
+            borderRadius: BorderRadius.circular(30), // Ensure the image itself is clipped to the circular shape
+            child: SvgPicture.asset('assets/icons/HCimg.svg',
+            height: 200,
+            width: 200,),
+          ),
         ),
+        actions: [
+          Container(
+          margin: EdgeInsets.all(1),
+          alignment: Alignment.center,
+          width: 51,
+          height: 51,
+          decoration: BoxDecoration(
+            color: Color(0xffF7F8F8),
+            borderRadius: BorderRadius.circular(1000)
+          ),
+           child: ClipRRect(
+            borderRadius: BorderRadius.circular(1000), // Ensure the image itself is clipped to the circular shape
+            child: SvgPicture.asset('assets/icons/HCimg.svg',
+            height: 2000,
+            width: 2000,),
+          ),
+        ),
+        ],
       )
     );
   }
