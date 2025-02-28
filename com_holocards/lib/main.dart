@@ -34,7 +34,7 @@ class MyApp extends StatelessWidget {
       //)
     //End of fonts include section
     
-      home: LoadingPage()
+      home: CommunityPage()
     );
   }
 }

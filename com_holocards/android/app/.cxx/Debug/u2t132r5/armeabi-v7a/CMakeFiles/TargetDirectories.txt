@@ -1,0 +1,2 @@
+C:/Users/w.chen/Documents/GitHub/tech-prep-app/com_holocards/android/app/.cxx/Debug/u2t132r5/armeabi-v7a/CMakeFiles/edit_cache.dir
+C:/Users/w.chen/Documents/GitHub/tech-prep-app/com_holocards/android/app/.cxx/Debug/u2t132r5/armeabi-v7a/CMakeFiles/rebuild_cache.dir
