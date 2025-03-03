@@ -15,31 +15,73 @@ class CommunityPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Community'),
+        title: Center(
+          child: Text(
+        'Links',
+        style: TextStyle(
+          fontSize: 24.0, // Larger text size
+          fontWeight: FontWeight.bold, // Bold text
+        ),
+          ),
+        ),
+        shadowColor: Colors.black38,
+        backgroundColor: Color.fromARGB(255, 255, 255, 255),
+        elevation: 5.0,
       ),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            ElevatedButton(
-              onPressed: () {
-                _copyToClipboard(context, 'https://www.pokemon.com/us/pokemon-tcg', 'Example 1 copied to clipboard');
-              },
-              child: Text('Copy Pokemon'),
+            SizedBox(
+              width: 200, // Set the width of the buttons
+              height: 60, // Set the height of the buttons
+              child: ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: Color(0xFF314e27),
+                ),
+                onPressed: () {
+                  _copyToClipboard(context, 'https://www.pokemon.com/us/pokemon-tcg', 'Example 1 copied to clipboard');
+                },
+                child: Text(
+                  'Holocard Website',
+                  style: TextStyle(color: Color.fromARGB(255, 255, 255, 255)),
+                ),
+              ),
             ),
-            SizedBox(height: 20),
-            ElevatedButton(
+            SizedBox(height: 40), // Increased space between buttons
+            SizedBox(
+              width: 200, // Set the width of the buttons
+              height: 60, // Set the height of the buttons
+              child: ElevatedButton(
+              style: ElevatedButton.styleFrom(
+              backgroundColor: Colors.white,
+              side: BorderSide(color: Color(0xFF314e27), width: 2.0), // Outline color and width
+              ),
               onPressed: () {
-                _copyToClipboard(context, 'https://www.example2.com', 'Example 2 copied to clipboard');
+              _copyToClipboard(context, 'https://www.example2.com', 'Example 2 copied to clipboard');
               },
-              child: Text('Copy Example 2'),
+              child: Text(
+              'Random Link',
+              style: TextStyle(color: Color(0xFF314e27)), // Text color
+              ),
+              ),
             ),
-            SizedBox(height: 20),
-            ElevatedButton(
-              onPressed: () {
-                _copyToClipboard(context, 'https://www.example3.com', 'Example 3 copied to clipboard');
-              },
-              child: Text('Copy Example 3'),
+            SizedBox(height: 40), // Increased space between buttons
+            SizedBox(
+              width: 200, // Set the width of the buttons
+              height: 60, // Set the height of the buttons
+              child: ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: Color(0xFF314e27),
+                ),
+                onPressed: () {
+                  _copyToClipboard(context, 'https://www.example3.com', 'Example 3 copied to clipboard');
+                },
+                child: Text(
+                  'Random Link',
+                  style: TextStyle(color: Color.fromARGB(255, 255, 255, 254)),
+                ),
+              ),
             ),
           ],
         ),
