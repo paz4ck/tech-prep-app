@@ -1,13 +1,9 @@
+import 'package:com_holocards/pages/loading.dart';
+import 'package:com_holocards/pages/test.dart';
 import 'package:flutter/material.dart';
-import 'pages/home.dart';
-import 'pages/loading.dart';
-import 'pages/cerb.dart';
-import 'pages/medusa.dart';
-import 'pages/satyr.dart';
 import 'pages/c.dart';
-import 'pages/r.dart';
-import 'pages/s.dart';
-import 'pages/comm.dart';
+import 'pages/home.dart';
+import 'pages/test.dart';
 
 var counter = 0; 
 void main() {
@@ -34,7 +30,7 @@ class MyApp extends StatelessWidget {
       //)
     //End of fonts include section
     
-      home: LoadingPage()
+      home: CardsPage()
     );
   }
 }
