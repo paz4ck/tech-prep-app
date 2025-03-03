@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import '../models/category_model.dart';
+import '../models/video_models.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -131,54 +131,53 @@ class _HomePageState extends State<HomePage> {
 
   Container _topRowClickables() {
     return Container(
-                  height: 150,
-                  margin: EdgeInsets.only(left: 5, top: 5, right: 5, bottom: 90),
-                  child: ListView.separated(
-                    itemCount: categories.length,
-                    scrollDirection: Axis.horizontal,
-                    padding: EdgeInsets.only(
-                      left: 20,
-                      right: 20,
+      height: 150,
+      margin: EdgeInsets.only(left: 5, top: 5, right: 5, bottom: 90),
+      child: Padding(
+        padding: EdgeInsets.symmetric(horizontal: 20.0), // Add padding to the left and right
+        child: ListView.separated(
+          itemCount: categories.length,
+          scrollDirection: Axis.horizontal,
+          separatorBuilder: (context, index) => SizedBox(width: 25),
+          itemBuilder: (context, index) {
+            return Container(
+              height: 50,
+              width: 100,
+              decoration: BoxDecoration(
+                color: categories[index].boxColor,
+                borderRadius: BorderRadius.circular(16),
+              ),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  Container(
+                    width: 90,
+                    height: 90,
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      shape: BoxShape.circle,
                     ),
-                    separatorBuilder: (context, index) => SizedBox(width: 25, ),
-                    itemBuilder: (context, index) {
-                      return Container(
-                        height: 50,
-                        width: 100,
-                        decoration: BoxDecoration(
-                          color: categories[index].boxColor,
-                          borderRadius: BorderRadius.circular(16)
-                        ),
-                        child: Column(
-                          mainAxisAlignment:  MainAxisAlignment.spaceEvenly,
-                          children: [
-                            Container(
-                              width: 90,
-                              height: 90,
-                              decoration: BoxDecoration(
-                                color: Colors.white,
-                                shape: BoxShape.circle,
-                              ),
-                              child: Padding(
-                                padding: const EdgeInsets.all(8.0),
-                                child: SvgPicture.asset(categories[index].iconPath),
-                              )
-                            ),
-                            Text(
-                              categories[index].name,
-                              style: TextStyle(
-                                fontWeight: FontWeight.w400,
-                                fontFamily: 'AcLonica',
-                                color: Color.fromARGB(255, 34, 85, 34),
-                                fontSize: 18,
-                              ),
-                            ),
-                          ],
-                        ),
-                      );
-                    },
+                    child: Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: SvgPicture.asset(categories[index].iconPath),
+                    ),
                   ),
-                );
+                  Text(
+                    categories[index].name,
+                    style: TextStyle(
+                      fontWeight: FontWeight.w400,
+                      fontFamily: 'AcLonica',
+                      color: Color.fromARGB(255, 34, 85, 34),
+                      fontSize: 18,
+                    ),
+                  ),
+                ],
+              ),
+            );
+          },
+        ),
+      ),
+    );
   }
   
 
