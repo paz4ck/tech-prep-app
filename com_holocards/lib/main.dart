@@ -30,7 +30,7 @@ class MyApp extends StatelessWidget {
       //)
     //End of fonts include section
     
-      home: CardsPage()
+      home: LoadingPage()
     );
   }
 }
