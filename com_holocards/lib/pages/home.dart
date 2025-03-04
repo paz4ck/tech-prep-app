@@ -1,6 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import '../models/video_models.dart';
+import '../models/resources_models.dart';
+import '../models/community_models.dart';
+import 'cerb.dart';
+import 'medusa.dart';
+import 'satyr.dart';
+import 'c.dart';
+import 's.dart';
+import 'comm.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -10,16 +18,20 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  List<CategoryModel> categories = [];
+  List<VideosModel> videos = [];
+  List<ResourcesModel> resources = [];
+  List<CommunityModel> community = [];
 
-  void _getCategories() {
-    categories = CategoryModel.getCategories();
+  void _getInitialInfo() {
+    videos = VideosModel.getVideos();
+    resources = ResourcesModel.getResources();
+    community = CommunityModel.getResources();
   }
 
   @override
   void initState() {
     super.initState();
-    _getCategories();
+    _getInitialInfo();
   }
 
   @override
@@ -35,10 +47,7 @@ class _HomePageState extends State<HomePage> {
               child: Column(
                 children: [
 
-
-
-
-                 // Below starts the top Videos text and container
+                  // Below starts the top Videos text and container
                   Text(
                     'Videos',
                     style: TextStyle(
@@ -54,7 +63,10 @@ class _HomePageState extends State<HomePage> {
 
 
 
-                 // Below starts the middle Resources Text and container
+
+
+
+                  // Below starts the middle Resources Text and container
                   Text(
                     'Resources',
                     style: TextStyle(
@@ -64,24 +76,12 @@ class _HomePageState extends State<HomePage> {
                       color: Color.fromARGB(255, 245, 220, 140),
                     ),
                   ),
-                  Container(
-                    height: 150,
-                    margin: EdgeInsets.only(left: 5, top: 5, right: 5, bottom: 90),
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(20),
-                      gradient: LinearGradient(
-                        begin: Alignment.topCenter,
-                        end: Alignment.bottomCenter,
-                        colors: [
-                          Color.fromARGB(255, 245, 223, 148), // Soft warm light tone
-                          Color.fromARGB(255, 170, 140, 90),  // Smooth transition beige
-                          Color.fromARGB(255, 50, 110, 50),   // Softer natural green
-                          Color.fromARGB(255, 20, 80, 20),    // Deep earthy green
-                        ],
-                      ),
-                    ),
-                  ),
+                  _middleRowClickables(),
                   // End of middle Resources text and container
+                  
+
+
+
 
 
 
@@ -93,18 +93,14 @@ class _HomePageState extends State<HomePage> {
                       fontSize: 21,
                       fontWeight: FontWeight.w800,
                       fontFamily: 'HelveticaBold',
-                      color: Color.fromARGB(255, 0, 80, 0),
+                      color: Color.fromARGB(255, 245, 220, 140),
                     ),
                   ),
-                  Container(
-                    height: 150,
-                    margin: EdgeInsets.only(left: 5, top: 5, right: 5),
-                    decoration: BoxDecoration(
-                      color: Color.fromARGB(255, 34, 85, 34),
-                      borderRadius: BorderRadius.circular(20),
-                    ),
-                  ),
+                  _bottomRowClickables(),
                   // End of bottom Community text and container
+                  
+
+
 
 
 
@@ -129,49 +125,59 @@ class _HomePageState extends State<HomePage> {
 
 
 
-  Container _topRowClickables() {
+
+  Container _bottomRowClickables() {
     return Container(
       height: 150,
-      margin: EdgeInsets.only(left: 5, top: 5, right: 5, bottom: 90),
+      margin: EdgeInsets.only(left: 140, top: 5, right: 5, bottom: 0),
       child: Padding(
         padding: EdgeInsets.symmetric(horizontal: 20.0), // Add padding to the left and right
         child: ListView.separated(
-          itemCount: categories.length,
+          itemCount: community.length,
           scrollDirection: Axis.horizontal,
           separatorBuilder: (context, index) => SizedBox(width: 25),
           itemBuilder: (context, index) {
-            return Container(
-              height: 50,
-              width: 100,
-              decoration: BoxDecoration(
-                color: categories[index].boxColor,
-                borderRadius: BorderRadius.circular(16),
-              ),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  Container(
-                    width: 90,
-                    height: 90,
-                    decoration: BoxDecoration(
-                      color: Colors.white,
-                      shape: BoxShape.circle,
+            return GestureDetector(
+              onTap: () {
+                switch (community[index].name) {
+                  case 'Socials':
+                    Navigator.push(context, MaterialPageRoute(builder: (context) => CommunityPage()));
+                    break;
+                }
+              },
+              child: Container(
+                height: 50,
+                width: 100,
+                decoration: BoxDecoration(
+                  color: community[index].boxColor,
+                  borderRadius: BorderRadius.circular(16),
+                ),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    Container(
+                      width: 90,
+                      height: 90,
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        shape: BoxShape.circle,
+                      ),
+                      child: Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: SvgPicture.asset(community[index].iconPath),
+                      ),
                     ),
-                    child: Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: SvgPicture.asset(categories[index].iconPath),
+                    Text(
+                      community[index].name,
+                      style: TextStyle(
+                        fontWeight: FontWeight.w400,
+                        fontFamily: 'AcLonica',
+                        color: Color.fromARGB(255, 34, 85, 34),
+                        fontSize: 18,
+                      ),
                     ),
-                  ),
-                  Text(
-                    categories[index].name,
-                    style: TextStyle(
-                      fontWeight: FontWeight.w400,
-                      fontFamily: 'AcLonica',
-                      color: Color.fromARGB(255, 34, 85, 34),
-                      fontSize: 18,
-                    ),
-                  ),
-                ],
+                  ],
+                ),
               ),
             );
           },
@@ -179,7 +185,167 @@ class _HomePageState extends State<HomePage> {
       ),
     );
   }
-  
+
+
+
+
+
+
+
+
+
+
+
+
+  Container _middleRowClickables() {
+    return Container(
+      height: 150,
+      margin: EdgeInsets.only(left: 70, top: 5, right: 5, bottom: 60),
+      child: Padding(
+        padding: EdgeInsets.symmetric(horizontal: 20.0), // Add padding to the left and right
+        child: ListView.separated(
+          itemCount: resources.length,
+          scrollDirection: Axis.horizontal,
+          separatorBuilder: (context, index) => SizedBox(width: 25),
+          itemBuilder: (context, index) {
+            return GestureDetector(
+              onTap: () {
+                switch (resources[index].name) {
+                  case 'Cards':
+                    Navigator.push(context, MaterialPageRoute(builder: (context) => CardsPage()));
+                    break;
+                  case "STL's":
+                    Navigator.push(context, MaterialPageRoute(builder: (context) => StlPage()));
+                    break;
+                }
+              },
+              child: Container(
+                height: 50,
+                width: 100,
+                decoration: BoxDecoration(
+                  color: resources[index].boxColor,
+                  borderRadius: BorderRadius.circular(16),
+                ),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    Container(
+                      width: 90,
+                      height: 90,
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        shape: BoxShape.circle,
+                      ),
+                      child: Padding(
+                        padding: const EdgeInsets.all(11.0),
+                        child: SvgPicture.asset(resources[index].iconPath),
+                      ),
+                    ),
+                    Text(
+                      resources[index].name,
+                      style: TextStyle(
+                        fontWeight: FontWeight.w400,
+                        fontFamily: 'AcLonica',
+                        color: Color.fromARGB(255, 34, 85, 34),
+                        fontSize: 18,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            );
+          },
+        ),
+      ),
+    );
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+  Container _topRowClickables() {
+    return Container(
+      height: 150,
+      margin: EdgeInsets.only(left: 10, top: 5, right: 5, bottom: 60),
+      child: Padding(
+        padding: EdgeInsets.symmetric(horizontal: 20.0), // Add padding to the left and right
+        child: ListView.separated(
+          itemCount: videos.length,
+          scrollDirection: Axis.horizontal,
+          separatorBuilder: (context, index) => SizedBox(width: 25),
+          itemBuilder: (context, index) {
+            return GestureDetector(
+              onTap: () {
+                switch (videos[index].name) {
+                  case 'Cerberus':
+                    Navigator.push(context, MaterialPageRoute(builder: (context) => CerbPage()));
+                    break;
+                  case 'Medusa':
+                    Navigator.push(context, MaterialPageRoute(builder: (context) => MedusaPage()));
+                    break;
+                  case 'Satyr':
+                    Navigator.push(context, MaterialPageRoute(builder: (context) => SatyrPage()));
+                    break;
+                }
+              },
+              child: Container(
+                height: 50,
+                width: 100,
+                decoration: BoxDecoration(
+                  color: videos[index].boxColor,
+                  borderRadius: BorderRadius.circular(16),
+                ),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    Container(
+                      width: 90,
+                      height: 90,
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        shape: BoxShape.circle,
+                      ),
+                      child: Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: SvgPicture.asset(videos[index].iconPath),
+                      ),
+                    ),
+                    Text(
+                      videos[index].name,
+                      style: TextStyle(
+                        fontWeight: FontWeight.w400,
+                        fontFamily: 'AcLonica',
+                        color: Color.fromARGB(255, 34, 85, 34),
+                        fontSize: 18,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            );
+          },
+        ),
+      ),
+    );
+  }
+
+
+
+
+
+
+
+
+
 
 
 
@@ -250,7 +416,16 @@ class _HomePageState extends State<HomePage> {
 
 
 
- BoxDecoration backgroundDecoration() {
+
+
+
+
+
+
+
+
+
+  BoxDecoration backgroundDecoration() {
     return BoxDecoration(
       gradient: LinearGradient(
         begin: Alignment.topCenter,

@@ -1,9 +1,6 @@
 import 'package:com_holocards/pages/loading.dart';
-import 'package:com_holocards/pages/test.dart';
 import 'package:flutter/material.dart';
-import 'pages/c.dart';
-import 'pages/home.dart';
-import 'pages/test.dart';
+
 
 var counter = 0; 
 void main() {

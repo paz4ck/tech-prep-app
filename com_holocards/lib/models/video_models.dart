@@ -1,44 +1,44 @@
 import 'package:flutter/material.dart';
 
-class CategoryModel {
+class VideosModel {
   String name;
   String iconPath;
   Color boxColor;
 
-  CategoryModel({
+  VideosModel({
     required this.name,
     required this.iconPath,
     required this.boxColor,
   });
 
-  static List<CategoryModel> getCategories() {
-    List<CategoryModel> categories = [];
+  static List<VideosModel> getVideos() {
+    List<VideosModel> videos = [];
 
-    categories.add(
-      CategoryModel(
+    videos.add(
+      VideosModel(
         name: 'Cerberus',
         iconPath: 'assets/icons/cerberus.svg',
         boxColor: Color.fromARGB(255, 245, 220, 140),
       ),
     );
 
-    categories.add(
-      CategoryModel(
+    videos.add(
+      VideosModel(
         name: "Medusa",
         iconPath: 'assets/icons/gorgon.svg',
         boxColor: Color.fromARGB(255, 245, 220, 140),
       ),
     );
 
-    categories.add(
-      CategoryModel(
+    videos.add(
+      VideosModel(
         name: "Satyr",
         iconPath: 'assets/icons/satyr.svg',
         boxColor: Color.fromARGB(255, 245, 220, 140),
       ),
     );
 
-    return categories;
+    return videos;
   }
 }
 
