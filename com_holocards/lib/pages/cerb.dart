@@ -8,7 +8,7 @@ class CerbPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: appBar(context),
+      appBar: appBar(),
       body: Container(
         decoration: BoxDecoration(
           gradient: LinearGradient(
@@ -97,55 +97,38 @@ class CerbPage extends StatelessWidget {
   }
 }
 
-AppBar appBar(BuildContext context) {
-  return AppBar(
-    title: Row(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: const [
-        Text(
-          'Holo',
-          style: TextStyle(
-            fontFamily: 'AcLonica',
-            fontSize: 24,
-            color: Color.fromARGB(255, 34, 85, 34),
+AppBar appBar() {
+    return AppBar(
+      backgroundColor: Colors.black, // Set the background color of the AppBar to transparent
+      elevation: 0, // Remove the shadow of the AppBar
+      title: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: const [
+          Text(
+            'Holo',
+            style: TextStyle(
+              fontFamily: 'AcLonica',
+              fontSize: 24,
+              color: Color.fromARGB(255, 34, 85, 34),
+            ),
           ),
-        ),
-        Text(
-          'Cards',
-          style: TextStyle(
-            fontFamily: 'AcLonica',
-            fontSize: 24,
-            color: Color.fromARGB(255, 245, 220, 140),
+          Text(
+            'Cards',
+            style: TextStyle(
+              fontFamily: 'AcLonica',
+              fontSize: 24,
+              color: Color.fromARGB(255, 245, 220, 140),
+            ),
           ),
-        ),
-      ],
-    ),
-    backgroundColor: Colors.black,
-    centerTitle: true,
-    shadowColor: Colors.black.withOpacity(1.0),
-    leading: Container(
-      margin: const EdgeInsets.all(6),
-      width: 50,
-      height: 50,
-      decoration: BoxDecoration(
-        color: const Color(0xffF7F8F8),
-        borderRadius: BorderRadius.circular(30),
+        ],
       ),
-      child: ClipRRect(
-        borderRadius: BorderRadius.circular(30),
-        child: SvgPicture.asset(
-          'assets/icons/HCimg.svg',
-          fit: BoxFit.contain,
-        ),
-      ),
-    ),
-    actions: [
-      Container(
+      centerTitle: true,
+      leading: Container(
         margin: const EdgeInsets.all(6),
         width: 50,
         height: 50,
         decoration: BoxDecoration(
-          color: const Color.fromARGB(255, 0, 0, 0),
+          color: const Color(0xffF7F8F8),
           borderRadius: BorderRadius.circular(30),
         ),
         child: ClipRRect(
@@ -156,6 +139,23 @@ AppBar appBar(BuildContext context) {
           ),
         ),
       ),
-    ],
-  );
-}
+      actions: [
+        Container(
+          margin: const EdgeInsets.all(6),
+          width: 50,
+          height: 50,
+          decoration: BoxDecoration(
+            color: const Color.fromARGB(255, 0, 0, 0),
+            borderRadius: BorderRadius.circular(30),
+          ),
+          child: ClipRRect(
+            borderRadius: BorderRadius.circular(30),
+            child: SvgPicture.asset(
+              'assets/icons/HCimg.svg',
+              fit: BoxFit.contain,
+            ),
+          ),
+        ),
+      ],
+    );
+  }

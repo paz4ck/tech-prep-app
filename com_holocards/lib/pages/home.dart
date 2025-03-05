@@ -37,94 +37,69 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.transparent, // Set the background color of the Scaffold to transparent
       appBar: appBar(),
-      body: Container(
-        decoration: backgroundDecoration(),
-        child: Column(
-          children: [
-            SizedBox(height: 25),
-            Center(
-              child: Column(
-                children: [
-
-                  // Below starts the top Videos text and container
-                  Text(
-                    'Videos',
-                    style: TextStyle(
-                      fontSize: 21,
-                      fontWeight: FontWeight.w800,
-                      fontFamily: 'HelveticaBold',
-                      color: Color.fromARGB(255, 245, 220, 140),
+      body: Stack(
+        children: [
+          SvgPicture.asset(
+            'assets/icons/homeBGTEMP.svg',
+            fit: BoxFit.cover,
+            width: double.infinity,
+            height: double.infinity,
+          ),
+          Column(
+            children: [
+              SizedBox(height: 25),
+              Center(
+                child: Column(
+                  children: [
+                    // Below starts the top Videos text and container
+                    Text(
+                      'Videos',
+                      style: TextStyle(
+                        fontSize: 21,
+                        fontWeight: FontWeight.w800,
+                        fontFamily: 'HelveticaBold',
+                        color: Color.fromARGB(255, 245, 220, 140),
+                      ),
                     ),
-                  ),
-                  _topRowClickables(),
-                  // End of top Video text and container
+                    _topRowClickables(),
+                    // End of top Video text and container
 
-
-
-
-
-
-
-                  // Below starts the middle Resources Text and container
-                  Text(
-                    'Resources',
-                    style: TextStyle(
-                      fontSize: 21,
-                      fontWeight: FontWeight.w800,
-                      fontFamily: 'HelveticaBold',
-                      color: Color.fromARGB(255, 245, 220, 140),
+                    // Below starts the middle Resources Text and container
+                    Text(
+                      'Resources',
+                      style: TextStyle(
+                        fontSize: 21,
+                        fontWeight: FontWeight.w800,
+                        fontFamily: 'HelveticaBold',
+                        color: Color.fromARGB(255, 245, 220, 140),
+                      ),
                     ),
-                  ),
-                  _middleRowClickables(),
-                  // End of middle Resources text and container
-                  
+                    _middleRowClickables(),
+                    // End of middle Resources text and container
 
-
-
-
-
-
-
-                  // Below starts the final Community text and container
-                  Text(
-                    'Community',
-                    style: TextStyle(
-                      fontSize: 21,
-                      fontWeight: FontWeight.w800,
-                      fontFamily: 'HelveticaBold',
-                      color: Color.fromARGB(255, 245, 220, 140),
+                    // Below starts the final Community text and container
+                    Text(
+                      'Community',
+                      style: TextStyle(
+                        fontSize: 21,
+                        fontWeight: FontWeight.w800,
+                        fontFamily: 'HelveticaBold',
+                        color: Color.fromARGB(255, 245, 220, 140),
+                      ),
                     ),
-                  ),
-                  _bottomRowClickables(),
-                  // End of bottom Community text and container
-                  
-
-
-
-
-
-
-                ],
+                    _bottomRowClickables(),
+                    // End of bottom Community text and container
+                  ],
+                ),
               ),
-            ),
-          ],
-        ),
+            ],
+          ),
+        ],
       ),
     );
   }
-
-
-
-
-
-
-
-
-
-
-
-
 
   Container _bottomRowClickables() {
     return Container(
@@ -185,17 +160,6 @@ class _HomePageState extends State<HomePage> {
       ),
     );
   }
-
-
-
-
-
-
-
-
-
-
-
 
   Container _middleRowClickables() {
     return Container(
@@ -259,18 +223,6 @@ class _HomePageState extends State<HomePage> {
       ),
     );
   }
-
-
-
-
-
-
-
-
-
-
-
-
 
   Container _topRowClickables() {
     return Container(
@@ -338,20 +290,10 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
-
-
-
-
-
-
-
-
-
-
-
-
   AppBar appBar() {
     return AppBar(
+      backgroundColor: Colors.transparent, // Set the background color of the AppBar to transparent
+      elevation: 0, // Remove the shadow of the AppBar
       title: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: const [
@@ -373,9 +315,7 @@ class _HomePageState extends State<HomePage> {
           ),
         ],
       ),
-      backgroundColor: Colors.black,
       centerTitle: true,
-      shadowColor: Colors.black.withOpacity(1.0),
       leading: Container(
         margin: const EdgeInsets.all(6),
         width: 50,
@@ -412,33 +352,4 @@ class _HomePageState extends State<HomePage> {
       ],
     );
   }
-
-
-
-
-
-
-
-
-
-
-
-
-
-  BoxDecoration backgroundDecoration() {
-    return BoxDecoration(
-      gradient: LinearGradient(
-        begin: Alignment.topCenter,
-        end: Alignment.bottomCenter,
-        colors: [
-          Color.fromARGB(255, 20, 40, 20), // Dark muted green blend
-          Color.fromARGB(255, 0, 80, 0), // Rich dark green
-          Color.fromARGB(255, 0, 120, 0), // Vibrant dark green
-          Color.fromARGB(255, 122, 150, 0), // Intermediate transition
-          Color.fromARGB(255, 245, 220, 140), // Final light color
-        ],
-      ),
-    );
-  }
 }
-

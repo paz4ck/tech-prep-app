@@ -98,6 +98,8 @@ class CardsPage extends StatelessWidget {
 
 AppBar appBar() {
     return AppBar(
+      backgroundColor: Colors.black, // Set the background color of the AppBar to transparent
+      elevation: 0, // Remove the shadow of the AppBar
       title: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: const [
@@ -119,9 +121,7 @@ AppBar appBar() {
           ),
         ],
       ),
-      backgroundColor: Colors.black,
       centerTitle: true,
-      shadowColor: Colors.black.withOpacity(1.0),
       leading: Container(
         margin: const EdgeInsets.all(6),
         width: 50,
@@ -157,4 +157,5 @@ AppBar appBar() {
         ),
       ],
     );
+
   }
