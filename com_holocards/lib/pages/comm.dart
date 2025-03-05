@@ -14,20 +14,7 @@ class CommunityPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Center(
-          child: Text(
-        'Links',
-        style: TextStyle(
-          fontSize: 24.0, // Larger text size
-          fontWeight: FontWeight.bold, // Bold text
-        ),
-          ),
-        ),
-        shadowColor: Colors.black38,
-        backgroundColor: Color.fromARGB(255, 255, 255, 255),
-        elevation: 5.0,
-      ),
+      appBar: AppBar(),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
