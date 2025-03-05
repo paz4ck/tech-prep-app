@@ -1,24 +1,51 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:flutter/services.dart'; 
 
 class StlPage extends StatelessWidget {
-  const StlPage({super.key});
+  const StlPage({super.key}); 
+
+  void _copyToClipboard(BuildContext context, String link, String message) {
+    Clipboard.setData(ClipboardData(text: link));
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(content: Text(message)),
+    );
+  } 
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: appBar(),
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            SizedBox(
+              width: 200,
+              height: 60,
+              child: ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: const Color(0xFF314e27),
+                ),
+                onPressed: () => _copyToClipboard(
+                    context, 
+                    'https://drive.google.com/file/d/1doPD4QGqNVFx2bMxlVZlmns-Xu7xS9RJ/view?usp=sharing', 
+                    'Download link copied to clipboard.'
+                ),
+                child: const Text(
+                  'STL Download',
+                  style: TextStyle(color: Colors.white),
+                ),
+              ),
+            ),
+            const SizedBox(height: 40), 
+          ],
+        ),
+      ),
     );
   }
-}
 
-
-
-
-
-//https://drive.google.com/drive/folders/1oUbSYvLr9bEP4R7r30IaDQ39x_Yx1kTz?usp=drive_link
-
-AppBar appBar() {
+  AppBar appBar() {
     return AppBar(
       title: Row(
         mainAxisAlignment: MainAxisAlignment.center,
@@ -80,3 +107,4 @@ AppBar appBar() {
       ],
     );
   }
+}
