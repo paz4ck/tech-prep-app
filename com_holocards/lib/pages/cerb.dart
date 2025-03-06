@@ -49,7 +49,7 @@ class CerbPage extends StatelessWidget {
             const SizedBox(height: 20),
             Container(
               width: double.infinity,
-              height: 200, // Adjust the height as needed
+              height: 350, // Adjust the height as needed
               color: Colors.grey[300], // Placeholder color
               child: const Center(
                 child: Text(

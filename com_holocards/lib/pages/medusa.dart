@@ -1,3 +1,4 @@
+import 'package:com_holocards/pages/home.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
@@ -8,6 +9,90 @@ class MedusaPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: appBar(),
+      body: Container(
+        decoration: BoxDecoration(
+          gradient: LinearGradient(
+            colors: [
+              const Color.fromARGB(255, 221, 190, 11),
+              const Color.fromARGB(255, 226, 183, 55),
+              const Color.fromARGB(255, 165, 144, 22),
+            ],
+            begin: Alignment.topLeft,
+            end: Alignment.bottomRight,
+          ),
+        ),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: [
+            const SizedBox(height: 20),
+            Align(
+              alignment: Alignment.topLeft,
+              child: IconButton(
+                icon: const Icon(Icons.arrow_back, color: Colors.white),
+                onPressed: () {
+                  Navigator.of(context).pushReplacement(
+                    MaterialPageRoute(builder: (context) => const HomePage()),
+                  );
+                },
+              ),
+            ),
+            const Center(
+              child: Text(
+                'Gorgon, Master of Stone Making',
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 24,
+                  color: Color.fromARGB(255, 253, 255, 255),
+                ),
+              ),
+            ),
+            const SizedBox(height: 20),
+            Container(
+              width: double.infinity,
+              height: 350, // Adjust the height as needed
+              color: Colors.grey[300], // Placeholder color
+              child: const Center(
+                child: Text(
+                  'Video Placeholder',
+                  style: TextStyle(
+                    color: Colors.black,
+                    fontSize: 18,
+                  ),
+                ),
+              ),
+            ),
+            const SizedBox(height: 20),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 16.0),
+              child: Container(
+                width: double.infinity,
+                height: 200, // Adjust the height as needed
+                decoration: BoxDecoration(
+                  border: Border.all(color: Colors.grey),
+                  borderRadius: BorderRadius.circular(5),
+                ),
+                child: const Padding(
+                  padding: EdgeInsets.all(8.0),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        'Slithering Strike - When exhausting only 2 Meander attack cards, Deal 150 damage and turn 2 of your opponents attack cards to stone (These cards become unusable, only on the next turn)',
+                        style: TextStyle(color: Color.fromARGB(255, 141, 129, 129), fontSize: 16),
+                      ),
+                      SizedBox(height: 10),
+                      Text(
+                        'Sight of Stone - When exhausting only 3 Meander attack cards, Deal 250 damage and 50 additional damage for each card you turned to stone',
+                        style: TextStyle(color: Color.fromARGB(255, 141, 129, 129), fontSize: 16),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            ),
+          ],
+        ),
+      ),
     );
   }
 }
