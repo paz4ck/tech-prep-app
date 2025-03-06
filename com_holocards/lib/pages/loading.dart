@@ -21,7 +21,7 @@ class _LoadingPageState extends State<LoadingPage> with SingleTickerProviderStat
 
     _controller = AnimationController(
       vsync: this,
-      duration: Duration(seconds: 3,)
+      duration: Duration(seconds: 3),
     );
 
     _animation = Tween<double>(begin: 1.0, end: 0.0).animate(_controller);
