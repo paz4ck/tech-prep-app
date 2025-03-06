@@ -1,4 +1,8 @@
 import 'package:com_holocards/pages/loading.dart';
+<<<<<<< Updated upstream
+=======
+
+>>>>>>> Stashed changes
 import 'package:flutter/material.dart';
 
 
