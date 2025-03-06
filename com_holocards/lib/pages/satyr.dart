@@ -66,7 +66,7 @@ class SatyrPage extends StatelessWidget {
               padding: const EdgeInsets.symmetric(horizontal: 16.0),
               child: Container(
                 width: double.infinity,
-                height: 175, // Adjust the height as needed
+                height: 200, // Adjust the height as needed
                 decoration: BoxDecoration(
                   border: Border.all(color: Colors.grey),
                   borderRadius: BorderRadius.circular(5),
