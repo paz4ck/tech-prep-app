@@ -241,7 +241,7 @@ class _HomePageState extends State<HomePage> {
                   case 'Cerberus':
                     Navigator.push(context, MaterialPageRoute(builder: (context) => CerbPage()));
                     break;
-                  case 'Medusa':
+                  case 'Gorgon':
                     Navigator.push(context, MaterialPageRoute(builder: (context) => MedusaPage()));
                     break;
                   case 'Satyr':

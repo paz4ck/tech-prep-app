@@ -16,84 +16,54 @@ class CommunityPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.transparent,
       appBar: appBar(),
-      body: Column(
-        children: <Widget>[
-          // Title and back arrow
-          Padding(
-            padding: const EdgeInsets.only(top: 21.0, left: 16.0, right: 16.0, bottom: 16.0), // Move the title area down by 5 pixels
-            child: Row(
-              children: [
-                GestureDetector(
-                  onTap: () {
-                    Navigator.of(context).pushReplacement(
-                      MaterialPageRoute(builder: (context) => const HomePage()),
-                    );
-                  },
-                  child: SvgPicture.asset(
-                    'assets/icons/Arrow - Left 2.svg',
-                    height: 30,
-                    width: 30,
-                  ),
-                ),
-                const SizedBox(width: 10),
-                const Text(
-                  'Community',
-                  style: TextStyle(
-                    fontSize: 24,
-                    fontWeight: FontWeight.bold,
-                    color: Color.fromARGB(255, 34, 85, 34),
-                  ),
-                ),
-              ],
-            ),
+      body: Stack(
+        children: [
+          SvgPicture.asset(
+            'assets/icons/homeBGTEMP.svg',
+            fit: BoxFit.cover,
+            width: double.infinity,
+            height: double.infinity,
           ),
-          // Buttons
-          Expanded(
-            child: Center(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: <Widget>[
-                  SizedBox(
-                    width: 200, // Set the width of the buttons
-                    height: 60, // Set the height of the buttons
-                    child: ElevatedButton(
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: const Color(0xFF314e27),
-                        splashFactory: InkRipple.splashFactory, // Add ripple effect
-                      ),
-                      onPressed: () {
-                        _copyToClipboard(context, 'https://www.pokemon.com/us/pokemon-tcg', 'Example 1 copied to clipboard');
+          Column(
+            children: <Widget>[
+              // Title and back arrow
+              Padding(
+                padding: const EdgeInsets.only(top: 21.0, left: 16.0, right: 16.0, bottom: 16.0), // Move the title area down by 5 pixels
+                child: Row(
+                  children: [
+                    GestureDetector(
+                      onTap: () {
+                        Navigator.of(context).pushReplacement(
+                          MaterialPageRoute(builder: (context) => const HomePage()),
+                        );
                       },
-                      child: const Text(
-                        'Holocard Website',
-                        style: TextStyle(color: Color.fromARGB(255, 255, 255, 255)),
+                      child: SvgPicture.asset(
+                        'assets/icons/Arrow - Left 2.svg',
+                        height: 30,
+                        width: 30,
+                        color: Colors.white, // Set the arrow color to white
                       ),
                     ),
-                  ),
-                  const SizedBox(height: 20), // Move the buttons up by 20 pixels
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      SizedBox(
-                        width: 200, // Set the width of the buttons
-                        height: 60, // Set the height of the buttons
-                        child: ElevatedButton(
-                          style: ElevatedButton.styleFrom(
-                            backgroundColor: Colors.white,
-                            side: const BorderSide(color: Color(0xFF314e27), width: 2.0), // Outline color and width
-                            splashFactory: InkRipple.splashFactory, // Add ripple effect
-                          ),
-                          onPressed: () {
-                            _copyToClipboard(context, 'https://www.example2.com', 'Example 2 copied to clipboard');
-                          },
-                          child: const Text(
-                            'Random Link',
-                            style: TextStyle(color: Color(0xFF314e27)), // Text color
-                          ),
-                        ),
+                    const SizedBox(width: 10),
+                    const Text(
+                      'Community',
+                      style: TextStyle(
+                        fontSize: 24,
+                        fontWeight: FontWeight.bold,
+                        color: Color.fromARGB(255, 34, 85, 34),
                       ),
-                      const SizedBox(width: 20), // Space between buttons
+                    ),
+                  ],
+                ),
+              ),
+              // Buttons
+              Expanded(
+                child: Center(
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: <Widget>[
                       SizedBox(
                         width: 200, // Set the width of the buttons
                         height: 60, // Set the height of the buttons
@@ -103,37 +73,79 @@ class CommunityPage extends StatelessWidget {
                             splashFactory: InkRipple.splashFactory, // Add ripple effect
                           ),
                           onPressed: () {
-                            _copyToClipboard(context, 'https://www.example3.com', 'Example 3 copied to clipboard');
+                            _copyToClipboard(context, 'https://www.pokemon.com/us/pokemon-tcg', 'HoloCard Domain copied to clipboard');
                           },
                           child: const Text(
-                            'Random Link',
+                            'Holocard Website',
+                            style: TextStyle(color: Color.fromARGB(255, 255, 255, 255)),
+                          ),
+                        ),
+                      ),
+                      const SizedBox(height: 20), // Move the buttons up by 20 pixels
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          SizedBox(
+                            width: 150, // Set the width of the buttons
+                            height: 60, // Set the height of the buttons
+                            child: ElevatedButton(
+                              style: ElevatedButton.styleFrom(
+                                backgroundColor: const Color(0xFF314e27),
+                                side: const BorderSide(color: Color(0xFF314e27), width: 2.0), // Outline color and width
+                                splashFactory: InkRipple.splashFactory, // Add ripple effect
+                              ),
+                              onPressed: () {
+                                _copyToClipboard(context, 'https://www.example2.com', 'Example 2 copied to clipboard');
+                              },
+                              child: const Text(
+                                'Discord',
+                                style: TextStyle(color: Color.fromARGB(255, 255, 255, 254)),
+                              ),
+                            ),
+                          ),
+                          const SizedBox(width: 20), // Space between buttons
+                          SizedBox(
+                            width: 150, // Set the width of the buttons
+                            height: 60, // Set the height of the buttons
+                            child: ElevatedButton(
+                              style: ElevatedButton.styleFrom(
+                                backgroundColor: const Color(0xFF314e27),
+                                splashFactory: InkRipple.splashFactory, // Add ripple effect
+                              ),
+                              onPressed: () {
+                                _copyToClipboard(context, 'https://www.example3.com', 'Example 3 copied to clipboard');
+                              },
+                              child: const Text(
+                                'YouTube',
+                                style: TextStyle(color: Color.fromARGB(255, 255, 255, 254)),
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                      const SizedBox(height: 20), // Space between rows
+                      SizedBox(
+                        width: 200, // Set the width of the buttons
+                        height: 60, // Set the height of the buttons
+                        child: ElevatedButton(
+                          style: ElevatedButton.styleFrom(
+                            backgroundColor: const Color(0xFF314e27),
+                            splashFactory: InkRipple.splashFactory, // Add ripple effect
+                          ),
+                          onPressed: () {
+                            _copyToClipboard(context, 'holocards.dev@gmail.com', 'Email copied to clipboard');
+                          },
+                          child: const Text(
+                            'Business Email',
                             style: TextStyle(color: Color.fromARGB(255, 255, 255, 254)),
                           ),
                         ),
                       ),
                     ],
                   ),
-                  const SizedBox(height: 20), // Space between rows
-                  SizedBox(
-                    width: 200, // Set the width of the buttons
-                    height: 60, // Set the height of the buttons
-                    child: ElevatedButton(
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: const Color(0xFF314e27),
-                        splashFactory: InkRipple.splashFactory, // Add ripple effect
-                      ),
-                      onPressed: () {
-                        _copyToClipboard(context, 'https://www.example4.com', 'Example 4 copied to clipboard');
-                      },
-                      child: const Text(
-                        'Random Link',
-                        style: TextStyle(color: Color.fromARGB(255, 255, 255, 254)),
-                      ),
-                    ),
-                  ),
-                ],
+                ),
               ),
-            ),
+            ],
           ),
         ],
       ),
@@ -142,7 +154,7 @@ class CommunityPage extends StatelessWidget {
 
   AppBar appBar() {
     return AppBar(
-      backgroundColor: Colors.black, // Set the background color of the AppBar to black
+      backgroundColor: Colors.transparent, // Set the background color of the AppBar to transparent
       elevation: 0, // Remove the shadow of the AppBar
       title: Row(
         mainAxisAlignment: MainAxisAlignment.center,
