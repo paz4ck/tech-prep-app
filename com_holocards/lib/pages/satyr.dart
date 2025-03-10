@@ -22,30 +22,33 @@ class SatyrPage extends StatelessWidget {
           ),
         ),
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          children: [
-            const SizedBox(height: 20),
-            Align(
-              alignment: Alignment.topLeft,
-              child: IconButton(
-                icon: const Icon(Icons.arrow_back, color: Colors.white),
-                onPressed: () {
-                  Navigator.of(context).pushReplacement(
-                    MaterialPageRoute(builder: (context) => const HomePage()),
-                  );
-                },
+            children: [
+              Row(
+                children: [
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.of(context).pushReplacement(
+                        MaterialPageRoute(builder: (context) => const HomePage()),
+                      );
+                    },
+                    child: SvgPicture.asset(
+                      'assets/icons/Arrow - Left 2.svg',
+                      height: 30,
+                      width: 30,
+                      color: Colors.white, // Set the arrow color to white
+                    ),
+                  ),
+                  const SizedBox(width: 10),
+                  const Text(
+                    'Satyr',
+                    style: TextStyle(
+                      fontSize: 24,
+                      fontWeight: FontWeight.bold,
+                      color: Color.fromARGB(255, 0, 218, 247),
+                    ),
+                  ),
+                ],
               ),
-            ),
-            const Center(
-              child: Text(
-                'Satyr, Protector of the Forest',
-                style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  fontSize: 24,
-                  color: Color.fromARGB(255, 109, 208, 238),
-                ),
-              ),
-            ),
             const SizedBox(height: 20),
             Container(
               width: double.infinity,
