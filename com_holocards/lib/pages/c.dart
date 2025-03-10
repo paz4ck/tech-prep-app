@@ -78,9 +78,11 @@ class CardsPage extends StatelessWidget {
                                  ),
                                 splashFactory: InkRipple.splashFactory, // Add ripple effect
                               ),
-                              onPressed: () {
-                                _copyToClipboard(context, 'https://www.pokemon.com/us/pokemon-tcg', 'HoloCard Domain copied to clipboard');
-                              },
+                              onPressed: () => _copyToClipboard(
+                                context, 
+                                'https://drive.google.com/drive/folders/1t0ET7pS4F-KxeeJn1ORUPi-ivupEfww9?usp=sharing', 
+                                'Cerberus download link copied to clipboard.'
+                              ),
                               child: SvgPicture.asset(
                                 'assets/icons/cerberus.svg',
                                 height: 80,
@@ -100,9 +102,11 @@ class CardsPage extends StatelessWidget {
                                    borderRadius: BorderRadius.circular(25.0), // Remove border radius
                                  ), // Add ripple effect
                               ),
-                              onPressed: () {
-                                _copyToClipboard(context, 'holocards.dev@gmail.com', 'Email copied to clipboard');
-                              },
+                              onPressed: () => _copyToClipboard(
+                                context, 
+                                'https://drive.google.com/drive/folders/1t0ET7pS4F-KxeeJn1ORUPi-ivupEfww9?usp=sharing', 
+                                'Cerberus download link copied to clipboard.'
+                              ),
                               child: const Text(
                                 'Cerberus\n  *|-|311\'s Might\n  *3 Headed Fury',
                                 style: TextStyle(color: Color.fromARGB(255, 255, 255, 254)),
@@ -126,9 +130,11 @@ class CardsPage extends StatelessWidget {
                                   borderRadius: BorderRadius.circular(50.0), // Remove border radius
                                  ), // Add ripple effect
                               ),
-                              onPressed: () {
-                                _copyToClipboard(context, 'https://www.example2.com', 'Example 2 copied to clipboard');
-                              },
+                              onPressed: () => _copyToClipboard(
+                                context, 
+                                'https://drive.google.com/drive/folders/1x_vTqMD31ub6s7i2yS1Mv_tl2wLUqg2w?usp=sharing', 
+                                'Gorgon download link copied to clipboard.'
+                              ),
                               child: SvgPicture.asset(
                                 'assets/icons/gorgon.svg',
                                 height: 80,
@@ -148,9 +154,11 @@ class CardsPage extends StatelessWidget {
                                    borderRadius: BorderRadius.circular(25.0), // Remove border radius
                                  ), // Add ripple effect
                               ),
-                              onPressed: () {
-                                _copyToClipboard(context, 'https://www.example3.com', 'Example 3 copied to clipboard');
-                              },
+                              onPressed: () => _copyToClipboard(
+                                context, 
+                                'https://drive.google.com/drive/folders/1x_vTqMD31ub6s7i2yS1Mv_tl2wLUqg2w?usp=sharing', 
+                                'Gorgon download link copied to clipboard.'
+                              ),
                               child: const Text(
                                 'Gorgon\n  *SLithering Strike\n  *Sight of Stone',
                                 style: TextStyle(color: Color.fromARGB(255, 255, 255, 254)),
@@ -174,9 +182,11 @@ class CardsPage extends StatelessWidget {
                                   borderRadius: BorderRadius.circular(50.0), // Remove border radius
                                  ), // Add ripple effect
                               ),
-                              onPressed: () {
-                                _copyToClipboard(context, 'https://www.example4.com', 'Example 4 copied to clipboard');
-                              },
+                              onPressed: () => _copyToClipboard(
+                                context, 
+                                'https://drive.google.com/drive/folders/103CbGrYXIIvfCIFvnLviMCiGhBg5LLKj?usp=sharing', 
+                                'Satyr download link copied to clipboard.'
+                              ),
                               child: SvgPicture.asset(
                                 'assets/icons/satyr.svg',
                                 height: 80,
@@ -196,9 +206,11 @@ class CardsPage extends StatelessWidget {
                                    borderRadius: BorderRadius.circular(25.0), // Remove border radius
                                  ), // Add ripple effect
                               ),
-                              onPressed: () {
-                                _copyToClipboard(context, 'https://www.example5.com', 'Example 5 copied to clipboard');
-                              },
+                              onPressed: () => _copyToClipboard(
+                                context, 
+                                'https://drive.google.com/drive/folders/103CbGrYXIIvfCIFvnLviMCiGhBg5LLKj?usp=sharing', 
+                                'Satyr download link copied to clipboard.'
+                              ),
                               child: const Text(
                                 'Satyr Image\n   *Elixir of Life\n  *Bucking Beauty',
                                 style: TextStyle(color: Color.fromARGB(255, 255, 255, 254)),
@@ -217,6 +229,7 @@ class CardsPage extends StatelessWidget {
       ),
     );
   }
+
 
   AppBar appBar() {
     return AppBar(
