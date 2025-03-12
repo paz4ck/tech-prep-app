@@ -24,7 +24,7 @@ class VideosModel {
 
     videos.add(
       VideosModel(
-        name: "Medusa",
+        name: "Gorgon",
         iconPath: 'assets/icons/gorgon.svg',
         boxColor: Color.fromARGB(255, 245, 220, 140),
       ),

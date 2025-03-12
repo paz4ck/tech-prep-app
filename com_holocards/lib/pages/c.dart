@@ -1,103 +1,240 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'r.dart';
-import 'home.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'home.dart';
 
 class CardsPage extends StatelessWidget {
+  const CardsPage({super.key});
+
+  void _copyToClipboard(BuildContext context, String link, String message) {
+    Clipboard.setData(ClipboardData(text: link));
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(content: Text(message)),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: appBar(), // Use the appBar function from home.dart
-      body: Container(
-        decoration: BoxDecoration(
-          gradient: LinearGradient(
-            begin: Alignment.topCenter,
-            end: Alignment.bottomCenter,
-            colors: [
-              Color(0xFF3E2723), // Dark Brown
-              Color(0xFF5D4037), // Medium Brown
-            ],
+      backgroundColor: Colors.transparent,
+      appBar: appBar(),
+      body: Stack(
+        children: [
+          SvgPicture.asset(
+            'assets/icons/homeBGTEMP.svg',
+            fit: BoxFit.cover,
+            width: double.infinity,
+            height: double.infinity,
           ),
-        ),
-        child: Center(
-          child: ConstrainedBox(
-            constraints: BoxConstraints(maxWidth: 600),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                SvgPicture.asset(
-                  'assets/icons/HCimg.svg',
-                  width: 150,
-                  height: 150,
+          Column(
+            children: <Widget>[
+              // Title and back arrow
+              Padding(
+                padding: const EdgeInsets.only(top: 21.0, left: 16.0, right: 16.0, bottom: 16.0), // Move the title area down by 5 pixels
+                child: Row(
+                  children: [
+                    GestureDetector(
+                      onTap: () {
+                        Navigator.of(context).pushReplacement(
+                          MaterialPageRoute(builder: (context) => const HomePage()),
+                        );
+                      },
+                      child: SvgPicture.asset(
+                        'assets/icons/Arrow - Left 2.svg',
+                        height: 30,
+                        width: 30,
+                        color: Colors.white, // Set the arrow color to white
+                      ),
+                    ),
+                    const SizedBox(width: 10),
+                    const Text(
+                      'Cards',
+                      style: TextStyle(
+                        fontSize: 24,
+                        fontWeight: FontWeight.bold,
+                        color: Color.fromARGB(255, 34, 85, 34),
+                      ),
+                    ),
+                  ],
                 ),
-                SizedBox(height: 40),
-                _buildMenuButton(context, 'CARD DATABASE', Colors.green[400]!, Colors.green[800]!),
-                SizedBox(height: 15),
-                _buildMenuButton(context, 'HOW TO PLAY', Colors.green[400]!, Colors.green[800]!),
-                SizedBox(height: 15),
-                _buildMenuButton(context, 'BACK', Colors.green[400]!, Colors.green[800]!),
-                SizedBox(height: 15),
-                _buildMenuButton(context, 'QUIT', Colors.red[400]!, Colors.red[800]!),
-              ],
-            ),
-          ),
-        ),
-      ),
-    );
-  }
-
-  Widget _buildMenuButton(BuildContext context, String text, Color textColor, Color hoverColor) {
-    return SizedBox(
-      width: 250,
-      child: ElevatedButton(
-        style: ElevatedButton.styleFrom(
-          backgroundColor: Color(0xFF4E342E), // Dark Brown
-          foregroundColor: textColor,
-          padding: EdgeInsets.symmetric(vertical: 18),
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(8),
-            side: BorderSide(color: Colors.amber, width: 2),
-          ),
-          elevation: 5,
-        ),
-        onPressed: () {
-          switch (text) {
-            case 'CARD DATABASE':
-              break;
-            case 'HOW TO PLAY':
-              Navigator.push(context, MaterialPageRoute(builder: (context) => RulesPage()));
-
-            case 'BACK':
-              Navigator.push(context, MaterialPageRoute(builder: (context) => HomePage()));
-
-            case 'QUIT':
-              SystemNavigator.pop();
-
-          }
-        },
-        child: Text(
-          text,
-          style: TextStyle(
-            fontSize: 18,
-            fontWeight: FontWeight.bold,
-            shadows: [
-              Shadow(
-                blurRadius: 3,
-                color: Colors.black.withAlpha((0.5 * 255).toInt()),
-              )
+              ),
+              // Buttons
+              Expanded(
+                child: Center(
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: <Widget>[
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          SizedBox(
+                            width: 150, // Set the width of the buttons
+                            height: 180, // Set the height of the buttons
+                            child: ElevatedButton(
+                              style: ElevatedButton.styleFrom(
+                                 backgroundColor: const Color.fromARGB(255, 245, 220, 140),
+                                 shape: RoundedRectangleBorder(
+                                   borderRadius: BorderRadius.circular(50.0), // Remove border radius
+                                 ),
+                                splashFactory: InkRipple.splashFactory, // Add ripple effect
+                              ),
+                              onPressed: () => _copyToClipboard(
+                                context, 
+                                'https://drive.google.com/drive/folders/1t0ET7pS4F-KxeeJn1ORUPi-ivupEfww9?usp=sharing', 
+                                'Cerberus download link copied to clipboard.'
+                              ),
+                              child: SvgPicture.asset(
+                                'assets/icons/cerberus.svg',
+                                height: 80,
+                                width: 30,
+                              ),
+                            ),
+                          ),
+                          const SizedBox(width: 20), // Space between buttons
+                          SizedBox(
+                            width: 180, // Set the width of the buttons
+                            height: 120, // Set the height of the buttons
+                            child: ElevatedButton(
+                              style: ElevatedButton.styleFrom(
+                                backgroundColor: const Color(0xFF314e27),
+                                splashFactory: InkRipple.splashFactory,
+                                shape: RoundedRectangleBorder(
+                                   borderRadius: BorderRadius.circular(25.0), // Remove border radius
+                                 ), // Add ripple effect
+                              ),
+                              onPressed: () => _copyToClipboard(
+                                context, 
+                                'https://drive.google.com/drive/folders/1t0ET7pS4F-KxeeJn1ORUPi-ivupEfww9?usp=sharing', 
+                                'Cerberus download link copied to clipboard.'
+                              ),
+                              child: const Text(
+                                'Cerberus\n  *|-|311\'s Might\n  *3 Headed Fury',
+                                style: TextStyle(color: Color.fromARGB(255, 255, 255, 254)),
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                      const SizedBox(height: 20), // Space between rows
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          SizedBox(
+                            width: 150, // Set the width of the buttons
+                            height: 180, // Set the height of the buttons
+                            child: ElevatedButton(
+                              style: ElevatedButton.styleFrom(
+                                 backgroundColor: const Color.fromARGB(255, 245, 220, 140),
+                                splashFactory: InkRipple.splashFactory,
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(50.0), // Remove border radius
+                                 ), // Add ripple effect
+                              ),
+                              onPressed: () => _copyToClipboard(
+                                context, 
+                                'https://drive.google.com/drive/folders/1x_vTqMD31ub6s7i2yS1Mv_tl2wLUqg2w?usp=sharing', 
+                                'Gorgon download link copied to clipboard.'
+                              ),
+                              child: SvgPicture.asset(
+                                'assets/icons/gorgon.svg',
+                                height: 80,
+                                width: 30,
+                              ),
+                            ),
+                          ),
+                          const SizedBox(width: 20), // Space between buttons
+                          SizedBox(
+                            width: 180, // Set the width of the buttons
+                            height: 120, // Set the height of the buttons
+                            child: ElevatedButton(
+                              style: ElevatedButton.styleFrom(
+                                backgroundColor: const Color(0xFF314e27),
+                                splashFactory: InkRipple.splashFactory,
+                                shape: RoundedRectangleBorder(
+                                   borderRadius: BorderRadius.circular(25.0), // Remove border radius
+                                 ), // Add ripple effect
+                              ),
+                              onPressed: () => _copyToClipboard(
+                                context, 
+                                'https://drive.google.com/drive/folders/1x_vTqMD31ub6s7i2yS1Mv_tl2wLUqg2w?usp=sharing', 
+                                'Gorgon download link copied to clipboard.'
+                              ),
+                              child: const Text(
+                                'Gorgon\n  *SLithering Strike\n  *Sight of Stone',
+                                style: TextStyle(color: Color.fromARGB(255, 255, 255, 254)),
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                      const SizedBox(height: 20), // Space between rows
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          SizedBox(
+                            width: 150, // Set the width of the buttons
+                            height: 180, // Set the height of the buttons
+                            child: ElevatedButton(
+                              style: ElevatedButton.styleFrom(
+                                 backgroundColor: const Color.fromARGB(255, 245, 220, 140),
+                                splashFactory: InkRipple.splashFactory,
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(50.0), // Remove border radius
+                                 ), // Add ripple effect
+                              ),
+                              onPressed: () => _copyToClipboard(
+                                context, 
+                                'https://drive.google.com/drive/folders/103CbGrYXIIvfCIFvnLviMCiGhBg5LLKj?usp=sharing', 
+                                'Satyr download link copied to clipboard.'
+                              ),
+                              child: SvgPicture.asset(
+                                'assets/icons/satyr.svg',
+                                height: 80,
+                                width: 30,
+                              ),
+                            ),
+                          ),
+                          const SizedBox(width: 20), // Space between buttons
+                          SizedBox(
+                            width: 180, // Set the width of the buttons
+                            height: 120, // Set the height of the buttons
+                            child: ElevatedButton(
+                              style: ElevatedButton.styleFrom(
+                                backgroundColor: const Color(0xFF314e27),
+                                splashFactory: InkRipple.splashFactory,
+                                shape: RoundedRectangleBorder(
+                                   borderRadius: BorderRadius.circular(25.0), // Remove border radius
+                                 ), // Add ripple effect
+                              ),
+                              onPressed: () => _copyToClipboard(
+                                context, 
+                                'https://drive.google.com/drive/folders/103CbGrYXIIvfCIFvnLviMCiGhBg5LLKj?usp=sharing', 
+                                'Satyr download link copied to clipboard.'
+                              ),
+                              child: const Text(
+                                'Satyr Image\n   *Elixir of Life\n  *Bucking Beauty',
+                                style: TextStyle(color: Color.fromARGB(255, 255, 255, 254)),
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
+                ),
+              ),
             ],
           ),
-        ),
+        ],
       ),
     );
   }
-}
 
 
-
-AppBar appBar() {
+  AppBar appBar() {
     return AppBar(
+      backgroundColor: Colors.transparent, // Set the background color of the AppBar to transparent
+      elevation: 0, // Remove the shadow of the AppBar
       title: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: const [
@@ -119,9 +256,7 @@ AppBar appBar() {
           ),
         ],
       ),
-      backgroundColor: Colors.black,
       centerTitle: true,
-      shadowColor: Colors.black.withOpacity(1.0),
       leading: Container(
         margin: const EdgeInsets.all(6),
         width: 50,
@@ -158,3 +293,4 @@ AppBar appBar() {
       ],
     );
   }
+}

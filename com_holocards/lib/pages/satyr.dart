@@ -1,3 +1,4 @@
+import 'package:com_holocards/pages/home.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
@@ -8,12 +9,101 @@ class SatyrPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: appBar(),
+      body: Container(
+        decoration: BoxDecoration(
+          gradient: LinearGradient(
+            colors: [
+              Colors.green[900]!,
+              Colors.green[700]!,
+              Colors.green[900]!,
+            ],
+            begin: Alignment.topLeft,
+            end: Alignment.bottomRight,
+          ),
+        ),
+        child: Column(
+            children: [
+              Row(
+                children: [
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.of(context).pushReplacement(
+                        MaterialPageRoute(builder: (context) => const HomePage()),
+                      );
+                    },
+                    child: SvgPicture.asset(
+                      'assets/icons/Arrow - Left 2.svg',
+                      height: 30,
+                      width: 30,
+                      color: Colors.white, // Set the arrow color to white
+                    ),
+                  ),
+                  const SizedBox(width: 10),
+                  const Text(
+                    'Satyr',
+                    style: TextStyle(
+                      fontSize: 24,
+                      fontWeight: FontWeight.bold,
+                      color: Color.fromARGB(255, 0, 218, 247),
+                    ),
+                  ),
+                ],
+              ),
+            const SizedBox(height: 20),
+            Container(
+              width: double.infinity,
+              height: 350, // Adjust the height as needed
+              color: Colors.grey[300], // Placeholder color
+              child: const Center(
+                child: Text(
+                  'Video Placeholder',
+                  style: TextStyle(
+                    color: Colors.black,
+                    fontSize: 18,
+                  ),
+                ),
+              ),
+            ),
+            const SizedBox(height: 20),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 16.0),
+              child: Container(
+                width: double.infinity,
+                height: 200, // Adjust the height as needed
+                decoration: BoxDecoration(
+                  border: Border.all(color: Colors.grey),
+                  borderRadius: BorderRadius.circular(5),
+                ),
+                child: const Padding(
+                  padding: EdgeInsets.all(8.0),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        'Elixer of Life - When exhausted only 2 Tau attack cards, Deal 200 damage and heal one monster for 200 HP or two monsters for 100 HP',
+                        style: TextStyle(color: Colors.white, fontSize: 16),
+                      ),
+                      SizedBox(height: 10),
+                      Text(
+                        'Bucking Beauty - When exhausted only 3 Tau attack cards, Deal 250 damage and shuffle up to 4 attack cards on the field from any player into the deck',
+                        style: TextStyle(color: Colors.white, fontSize: 16),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            ),
+          ],
+        ),
+      ),
     );
   }
 }
 
 AppBar appBar() {
     return AppBar(
+      backgroundColor: Colors.black, // Set the background color of the AppBar to transparent
+      elevation: 0, // Remove the shadow of the AppBar
       title: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: const [
@@ -35,9 +125,7 @@ AppBar appBar() {
           ),
         ],
       ),
-      backgroundColor: Colors.black,
       centerTitle: true,
-      shadowColor: Colors.black.withOpacity(1.0),
       leading: Container(
         margin: const EdgeInsets.all(6),
         width: 50,

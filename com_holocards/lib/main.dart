@@ -1,5 +1,4 @@
 import 'package:com_holocards/pages/loading.dart';
-import 'package:com_holocards/pages/s.dart';
 import 'package:flutter/material.dart';
 
 
@@ -28,7 +27,7 @@ class MyApp extends StatelessWidget {
       //)
     //End of fonts include section
     
-      home: StlPage()
+      home: LoadingPage()
     );
   }
 }
