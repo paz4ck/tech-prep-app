@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
-import 'package:flutter/services.dart'; 
+import 'package:flutter/services.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'home.dart';
 
 class StlPage extends StatelessWidget {
   const StlPage({super.key}); 
@@ -12,42 +13,91 @@ class StlPage extends StatelessWidget {
     );
   } 
 
+  
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.transparent,
       appBar: appBar(),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            SizedBox(
-              width: 200,
-              height: 60,
-              child: ElevatedButton(
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: const Color(0xFF314e27),
-                ),
-                onPressed: () => _copyToClipboard(
-                    context, 
-                    'https://drive.google.com/file/d/1doPD4QGqNVFx2bMxlVZlmns-Xu7xS9RJ/view?usp=sharing', 
-                    'Download link copied to clipboard.'
-                ),
-                child: const Text(
-                  'STL Download',
-                  style: TextStyle(color: Colors.white),
+      body: Stack(
+        children: [
+          SvgPicture.asset(
+            'assets/icons/homeBGTEMP.svg',
+            fit: BoxFit.cover,
+            width: double.infinity,
+            height: double.infinity,
+          ),
+          Column(
+            children: <Widget>[
+              // Title and back arrow
+              Padding(
+                padding: const EdgeInsets.only(top: 21.0, left: 16.0, right: 16.0, bottom: 16.0), // Move the title area down by 5 pixels
+                child: Row(
+                  children: [
+                    GestureDetector(
+                      onTap: () {
+                        Navigator.of(context).pushReplacement(
+                          MaterialPageRoute(builder: (context) => const HomePage()),
+                        );
+                      },
+                      child: SvgPicture.asset(
+                        'assets/icons/Arrow - Left 2.svg',
+                        height: 30,
+                        width: 30,
+                        color: Colors.white, // Set the arrow color to white
+                      ),
+                    ),
+                    const SizedBox(width: 10),
+                    const Text(
+                      'STL',
+                      style: TextStyle(
+                        fontSize: 24,
+                        fontWeight: FontWeight.bold,
+                        color: Color.fromARGB(255, 34, 85, 34),
+                      ),
+                    ),
+                  ],
                 ),
               ),
-            ),
-            const SizedBox(height: 40), 
-          ],
-        ),
+              // Buttons
+              Expanded(
+                child: Center(
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: <Widget>[
+                      SizedBox(
+                        width: 200, // Set the width of the buttons
+                        height: 60, // Set the height of the buttons
+                        child: ElevatedButton(
+                          style: ElevatedButton.styleFrom(
+                            backgroundColor: const Color(0xFF314e27),
+                            splashFactory: InkRipple.splashFactory, // Add ripple effect
+                          ),
+                          onPressed: () => _copyToClipboard(
+                            context, 
+                            'https://drive.google.com/file/d/1doPD4QGqNVFx2bMxlVZlmns-Xu7xS9RJ/view?usp=sharing', 
+                            'Download link copied to clipboard.'
+                          ),
+                          child: const Text(
+                            'STL Download',
+                            style: TextStyle(color: Color.fromARGB(255, 255, 255, 255)),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ],
       ),
     );
   }
 
   AppBar appBar() {
     return AppBar(
-      backgroundColor: Colors.black, // Set the background color of the AppBar to transparent
+      backgroundColor: Colors.transparent, // Set the background color of the AppBar to transparent
       elevation: 0, // Remove the shadow of the AppBar
       title: Row(
         mainAxisAlignment: MainAxisAlignment.center,
