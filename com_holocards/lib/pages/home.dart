@@ -37,7 +37,7 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.transparent, // Set the background color of the Scaffold to transparent
+      backgroundColor: Colors.black, // Set the background color of the Scaffold to transparent
       appBar: appBar(),
       body: Stack(
         children: [
