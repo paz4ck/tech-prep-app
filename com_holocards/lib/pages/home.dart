@@ -292,7 +292,7 @@ class _HomePageState extends State<HomePage> {
 
   AppBar appBar() {
     return AppBar(
-      backgroundColor: Colors.transparent, // Set the background color of the AppBar to transparent
+      backgroundColor: Colors.black, // Set the background color of the AppBar to transparent
       elevation: 0, // Remove the shadow of the AppBar
       title: Row(
         mainAxisAlignment: MainAxisAlignment.center,
