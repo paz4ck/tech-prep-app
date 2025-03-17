@@ -42,7 +42,7 @@ class MedusaPage extends StatelessWidget {
                   ),
                   const SizedBox(width: 10),
                   const Text(
-                    'Medusa',
+                    'Gorgon',
                     style: TextStyle(
                       fontSize: 24,
                       fontWeight: FontWeight.bold,

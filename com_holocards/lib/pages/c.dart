@@ -160,7 +160,7 @@ class CardsPage extends StatelessWidget {
                                 'Gorgon download link copied to clipboard.'
                               ),
                               child: const Text(
-                                'Gorgon\n  *SLithering Strike\n  *Sight of Stone',
+                                'Gorgon\n  *Slithering Strike\n  *Sight of Stone',
                                 style: TextStyle(color: Color.fromARGB(255, 255, 255, 254)),
                               ),
                             ),
