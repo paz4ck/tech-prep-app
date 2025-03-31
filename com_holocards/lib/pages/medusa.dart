@@ -1,9 +1,36 @@
 import 'package:com_holocards/pages/home.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 
-class MedusaPage extends StatelessWidget {
+class MedusaPage extends StatefulWidget {
   const MedusaPage({super.key});
+
+  @override
+  State<MedusaPage> createState() => _MedusaPageState();
+}
+
+class _MedusaPageState extends State<MedusaPage> {
+  late YoutubePlayerController _youtubeController;
+
+  @override
+  void initState() {
+    super.initState();
+    _youtubeController = YoutubePlayerController(
+      initialVideoId: YoutubePlayer.convertUrlToId("https://www.youtube.com/watch?v=kOePFqreZsg")!, // Replace with your YouTube video link
+      flags: const YoutubePlayerFlags(
+        autoPlay: true,
+        loop: true,
+        mute: false,
+      ),
+    );
+  }
+
+  @override
+  void dispose() {
+    _youtubeController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -22,7 +49,7 @@ class MedusaPage extends StatelessWidget {
           ),
         ),
         child: Padding(
-          padding: const EdgeInsets.only(top: 21.0, left: 16.0, right: 16.0, bottom: 16.0), // Move the title area down by 5 pixels
+          padding: const EdgeInsets.only(top: 21.0, left: 16.0, right: 16.0, bottom: 16.0),
           child: Column(
             children: [
               Row(
@@ -37,7 +64,7 @@ class MedusaPage extends StatelessWidget {
                       'assets/icons/Arrow - Left 2.svg',
                       height: 30,
                       width: 30,
-                      color: Colors.white, // Set the arrow color to white
+                      color: Colors.white,
                     ),
                   ),
                   const SizedBox(width: 10),
@@ -54,16 +81,11 @@ class MedusaPage extends StatelessWidget {
               const SizedBox(height: 20),
               Container(
                 width: double.infinity,
-                height: 350, // Adjust the height as needed
-                color: Colors.grey[300], // Placeholder color
-                child: const Center(
-                  child: Text(
-                    'Video Placeholder',
-                    style: TextStyle(
-                      color: Colors.black,
-                      fontSize: 18,
-                    ),
-                  ),
+                height: 350,
+                color: Colors.grey[300],
+                child: YoutubePlayer(
+                  controller: _youtubeController,
+                  showVideoProgressIndicator: true,
                 ),
               ),
               const SizedBox(height: 20),
@@ -71,7 +93,7 @@ class MedusaPage extends StatelessWidget {
                 padding: const EdgeInsets.symmetric(horizontal: 16.0),
                 child: Container(
                   width: double.infinity,
-                  height: 250, // Adjust the height as needed
+                  height: 250,
                   decoration: BoxDecoration(
                     border: Border.all(color: Colors.grey),
                     borderRadius: BorderRadius.circular(5),
@@ -104,8 +126,8 @@ class MedusaPage extends StatelessWidget {
 
   AppBar appBar() {
     return AppBar(
-      backgroundColor: Colors.black, // Set the background color of the AppBar to black
-      elevation: 0, // Remove the shadow of the AppBar
+      backgroundColor: Colors.black,
+      elevation: 0,
       title: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: const [

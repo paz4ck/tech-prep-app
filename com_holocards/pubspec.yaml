@@ -28,6 +28,7 @@ environment:
 # the latest version available on pub.dev. To see which dependencies have newer
 # versions available, run `flutter pub outdated`.
 dependencies:
+  youtube_player_flutter: ^9.1.1
   flutter:
     sdk: flutter
   flutter_svg: ^2.0.17
@@ -62,6 +63,8 @@ flutter:
   assets:
     - assets/icons/
     - assets/icons/HCimg.svg
+    - assets/cerbVideo.gif
+    - assets/video/cerbVIDEO.mp4
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/to/resolution-aware-images
 

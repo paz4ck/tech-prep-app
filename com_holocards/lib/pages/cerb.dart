@@ -1,9 +1,36 @@
 import 'package:com_holocards/pages/home.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 
-class CerbPage extends StatelessWidget {
+class CerbPage extends StatefulWidget {
   const CerbPage({super.key});
+
+  @override
+  State<CerbPage> createState() => _CerbPageState();
+}
+
+class _CerbPageState extends State<CerbPage> {
+  late YoutubePlayerController _youtubeController;
+
+  @override
+  void initState() {
+    super.initState();
+    _youtubeController = YoutubePlayerController(
+      initialVideoId: YoutubePlayer.convertUrlToId("https://www.youtube.com/watch?v=NjFMShuqrGo")!,
+      flags: const YoutubePlayerFlags(
+        autoPlay: true,
+        loop: true,
+        mute: false,
+      ),
+    );
+  }
+
+  @override
+  void dispose() {
+    _youtubeController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -22,14 +49,14 @@ class CerbPage extends StatelessWidget {
           ),
         ),
         child: Padding(
-          padding: const EdgeInsets.only(top: 21.0, left: 16.0, right: 16.0, bottom: 16.0), // Move the title area down by 5 pixels
+          padding: const EdgeInsets.all(16.0),
           child: Column(
             children: [
               Row(
                 children: [
                   GestureDetector(
                     onTap: () {
-                      Navigator.of(context).pushReplacement(
+                      Navigator.of(context).push(
                         MaterialPageRoute(builder: (context) => const HomePage()),
                       );
                     },
@@ -37,7 +64,7 @@ class CerbPage extends StatelessWidget {
                       'assets/icons/Arrow - Left 2.svg',
                       height: 30,
                       width: 30,
-                      color: Colors.white, // Set the arrow color to white
+                      color: Colors.white,
                     ),
                   ),
                   const SizedBox(width: 10),
@@ -54,16 +81,11 @@ class CerbPage extends StatelessWidget {
               const SizedBox(height: 20),
               Container(
                 width: double.infinity,
-                height: 350, // Adjust the height as needed
-                color: Colors.grey[300], // Placeholder color
-                child: const Center(
-                  child: Text(
-                    'Video Placeholder',
-                    style: TextStyle(
-                      color: Colors.black,
-                      fontSize: 18,
-                    ),
-                  ),
+                height: 350,
+                color: Colors.grey[300],
+                child: YoutubePlayer(
+                  controller: _youtubeController,
+                  showVideoProgressIndicator: true,
                 ),
               ),
               const SizedBox(height: 20),
@@ -71,7 +93,7 @@ class CerbPage extends StatelessWidget {
                 padding: const EdgeInsets.symmetric(horizontal: 16.0),
                 child: Container(
                   width: double.infinity,
-                  height: 200, // Adjust the height as needed
+                  height: 200,
                   decoration: BoxDecoration(
                     border: Border.all(color: Colors.grey),
                     borderRadius: BorderRadius.circular(5),
@@ -101,57 +123,39 @@ class CerbPage extends StatelessWidget {
       ),
     );
   }
-}
 
-AppBar appBar() {
-  return AppBar(
-    backgroundColor: Colors.black, // Set the background color of the AppBar to black
-    elevation: 0, // Remove the shadow of the AppBar
-    title: Row(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: const [
-        Text(
-          'Holo',
-          style: TextStyle(
-            fontFamily: 'AcLonica',
-            fontSize: 24,
-            color: Color.fromARGB(255, 34, 85, 34),
+  AppBar appBar() {
+    return AppBar(
+      backgroundColor: Colors.black,
+      elevation: 0,
+      title: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: const [
+          Text(
+            'Holo',
+            style: TextStyle(
+              fontFamily: 'AcLonica',
+              fontSize: 24,
+              color: Color.fromARGB(255, 34, 85, 34),
+            ),
           ),
-        ),
-        Text(
-          'Cards',
-          style: TextStyle(
-            fontFamily: 'AcLonica',
-            fontSize: 24,
-            color: Color.fromARGB(255, 245, 220, 140),
+          Text(
+            'Cards',
+            style: TextStyle(
+              fontFamily: 'AcLonica',
+              fontSize: 24,
+              color: Color.fromARGB(255, 245, 220, 140),
+            ),
           ),
-        ),
-      ],
-    ),
-    centerTitle: true,
-    leading: Container(
-      margin: const EdgeInsets.all(6),
-      width: 50,
-      height: 50,
-      decoration: BoxDecoration(
-        color: const Color(0xffF7F8F8),
-        borderRadius: BorderRadius.circular(30),
+        ],
       ),
-      child: ClipRRect(
-        borderRadius: BorderRadius.circular(30),
-        child: SvgPicture.asset(
-          'assets/icons/HCimg.svg',
-          fit: BoxFit.contain,
-        ),
-      ),
-    ),
-    actions: [
-      Container(
+      centerTitle: true,
+      leading: Container(
         margin: const EdgeInsets.all(6),
         width: 50,
         height: 50,
         decoration: BoxDecoration(
-          color: const Color.fromARGB(255, 0, 0, 0),
+          color: const Color(0xffF7F8F8),
           borderRadius: BorderRadius.circular(30),
         ),
         child: ClipRRect(
@@ -162,6 +166,24 @@ AppBar appBar() {
           ),
         ),
       ),
-    ],
-  );
+      actions: [
+        Container(
+          margin: const EdgeInsets.all(6),
+          width: 50,
+          height: 50,
+          decoration: BoxDecoration(
+            color: const Color.fromARGB(255, 0, 0, 0),
+            borderRadius: BorderRadius.circular(30),
+          ),
+          child: ClipRRect(
+            borderRadius: BorderRadius.circular(30),
+            child: SvgPicture.asset(
+              'assets/icons/HCimg.svg',
+              fit: BoxFit.contain,
+            ),
+          ),
+        ),
+      ],
+    );
+  }
 }
